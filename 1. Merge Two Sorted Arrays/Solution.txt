@@ -1,0 +1,45 @@
+void merge(vector<int>& nums1, int m, vector<int>& nums2, int n) {
+        // 1. take A  Temp. array
+        // 2. Use 2 Pointer approach to merge the array's
+        // 3. copy the ans into the original array
+        //Time complexity: O(m + n) Space complexity: O( m+ n)
+        vector<int>temp;
+
+        int i = 0, j = 0;
+        while(i<m && j<n){
+            if(nums1[i]<= nums2[j]){
+                temp.push_back(nums1[i]);
+                i++;
+            }else{
+                temp.push_back(nums2[j]);
+                j++;
+            }
+        }
+        while(i<m){
+            temp.push_back(nums1[i]);
+            i++;
+        }
+        while(j<n){
+            temp.push_back(nums2[j]);
+            j++;
+        }
+
+        nums1 = temp;
+
+
+        /*
+        Note: Here is the algorithm for merging without using extra space
+        using gap method. This is most efficient so far
+
+        Here's the Algorithm:
+        Initialize the gap size to half the total length of nums1 and nums2.
+        Iterate through the arrays while the gap is greater than 0.
+        In each iteration, perform a modified insertion sort within the gap.
+        The i and j pointers are used to compare elements within the gap.
+        If both elements being compared are in nums1, compare them and swap if necessary.
+        If one element is in nums1 and the other is in nums2, compare and swap accordingly.
+        If both elements are in nums2, compare and swap as needed.
+        Reduce the gap size in each iteration.
+        Continue until the gap becomes 1.
+        */
+    }
